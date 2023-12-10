@@ -89,3 +89,44 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// return the year of which the Unix version 6 was released
+int
+sys_getyear (void)
+{
+  return 1975;
+}
+
+// return the year of which the Unix version 6 was released
+int
+sys_getmysize (void)
+{
+  return myproc()->sz;
+}
+
+
+int
+sys_getkernalstartaddr (void)
+{
+  return KERNBASE;
+}
+
+int
+sys_getkernalendaddr (void)
+{
+  return KERNBASE + PHYSTOP;
+}
+
+int
+sys_getkernalvariaddr (void)
+{
+  int i = 222;
+  return (int)&i;
+
+}
+
+int
+sys_getsystemcalladdr (void)
+{
+  return (int)&sys_fork;
+}
