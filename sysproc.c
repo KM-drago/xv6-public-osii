@@ -130,3 +130,15 @@ sys_getsystemcalladdr (void)
 {
   return (int)&sys_fork;
 }
+
+int
+sys_setpriority(void)
+{
+  int n;
+
+  struct proc *p = myproc();
+  if(argint(0, &n) > 0)
+    return -1;
+  p->priority = n;
+  return p->priority;
+}
