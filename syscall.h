@@ -27,3 +27,5 @@
 #define SYS_getkernalvariaddr 26
 #define SYS_getsystemcalladdr 27
 #define SYS_setpriority 28
+#define SYS_getinodesize 29
+#define SYS_ps 30

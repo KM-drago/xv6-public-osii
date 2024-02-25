@@ -19,6 +19,17 @@ main(void)
   dup(0);  // stdout
   dup(0);  // stderr
 
+  // pid = fork();
+  //   if(pid < 0){
+  //     printf(1, "init: fork failed\n");
+  //     exit();
+  //   }
+  //   if(pid == 0){
+  //     exec("myprog", argv);
+  //     printf(1, "init: exec myprog failed\n");
+  //     exit();
+  //   }
+
   for(;;){
     printf(1, "init: starting sh\n");
     pid = fork();

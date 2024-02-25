@@ -142,3 +142,36 @@ sys_setpriority(void)
   p->priority = n;
   return p->priority;
 }
+
+int
+sys_ps(void)
+{
+    int size;
+    char *buf;
+    char *s;
+
+    struct proc* proc = getPtable();
+
+    if (argint(0, &size) <0){
+        return -1;
+    }
+
+    if (argptr(1, &buf,size) <0){
+        return -1;
+    }
+
+    s = buf;
+
+    while(buf + size > s){
+        *(int *)s = proc->pid;
+        s+=4;
+        *(uint *)s = proc->sz;
+        s+=4;
+        strncpy(s, proc->name,16);
+        s+=16;
+        proc++;
+    }
+
+    return 1;
+}
+
